@@ -1,0 +1,25 @@
+<ul>
+  <li>
+    <a routerLink="public-page">[PUBLIC-PAGE]</a>
+  </li>
+  <li *ngIf="isLoggedIn()">
+    <a routerLink="protected-page">[PROTECTED-PAGE]</a>
+  </li>
+</ul>
+
+<div>
+  <button (click)="login()" *ngIf="!isLoggedIn()">Login</button>
+</div>
+<div>
+  <button (click)="logout()" *ngIf="isLoggedIn()">Logout</button>
+</div>
+<div *ngIf="isLoggedIn()">
+  <p>Logged In</p>
+  <button (click)="callProfile()">GET Profile</button>
+  <button (click)="callMessages()">GET Messages</button>
+  <p>API RESPONSE: {{ apiResponse }}</p>
+</div>
+<div *ngIf="!isLoggedIn()">
+  <p>NOT log in</p>
+</div>
+<router-outlet></router-outlet>
